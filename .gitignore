@@ -1,0 +1,21 @@
+# Rust build outputs
+/target
+/target_build
+/tools/key-generator/target
+
+# Private Key Generator (Keep Local Only)
+tools/key-generator/
+
+# Private Credentials & License Keys
+.env
+license.key
+
+# Executables & Debug PDBs
+*.exe
+*.pdb
+
+# IDE & OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

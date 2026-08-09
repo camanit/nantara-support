@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nantara Support - AI-Powered Control Panel</title>
+    <meta name="description" content="Dashboard Diagnostik dan Otomatisasi Perbaikan IT Support Berbasis AI">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-glow"></div>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header-bar">
+            <div class="logo-group">
+                <div class="logo-icon">⚡</div>
+                <div>
+                    <h1 class="logo-title">Nantara Support</h1>
+                    <p class="logo-subtitle">AI-Powered Self-Healing Agent (Rust Engine)</p>
+                </div>
+            </div>
+            <div class="header-actions">
+                <span id="license-badge" class="badge badge-license">COMMUNITY EDITION</span>
+                <span id="agent-status-badge" class="badge badge-online">● Agent Online</span>
+                <button id="btn-open-license" class="btn btn-secondary">🔑 Lisensi Pro</button>
+                <button id="btn-refresh" class="btn btn-secondary">🔄 Refresh</button>
+            </div>
+        </header>
+
+        <!-- Main Metrics Grid -->
+        <section class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-header">
+                    <span>⚡ CPU Usage</span>
+                    <span id="cpu-core-count" class="metric-tag">0 Cores</span>
+                </div>
+                <div class="metric-value-row">
+                    <h2 id="cpu-usage-val">0%</h2>
+                    <div class="progress-bar-bg">
+                        <div id="cpu-progress" class="progress-bar-fill" style="width: 0%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-header">
+                    <span>🧠 Memory (RAM)</span>
+                    <span id="ram-detail" class="metric-tag">0 / 0 MB</span>
+                </div>
+                <div class="metric-value-row">
+                    <h2 id="ram-usage-val">0%</h2>
+                    <div class="progress-bar-bg">
+                        <div id="ram-progress" class="progress-bar-fill progress-ram" style="width: 0%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-header">
+                    <span>💾 Storage Health</span>
+                    <span id="os-info" class="metric-tag">Windows</span>
+                </div>
+                <div id="disks-container" class="disks-list">
+                    <p class="text-muted">Loading disk status...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Assistant & Log Analysis Section -->
+        <div class="split-layout">
+            <!-- 🤖 AI Helpdesk Chatbot -->
+            <section class="card-glass ai-chat-card">
+                <div class="card-header">
+                    <h3>🤖 AI Helpdesk Assistant</h3>
+                    <span class="subtext">Tanyakan masalah Anda dalam bahasa sehari-hari</span>
+                </div>
+                <div id="chat-messages" class="chat-messages-container">
+                    <div class="chat-bubble ai-bubble">
+                        Halo! Saya **Nantara AI Assistant**. Ceritakan kendala PC Anda (contoh: <em>"Internetku lemot dan gak bisa ngeprint"</em>), dan saya akan memberikan rekomendasi perbaikan otomatis!
+                    </div>
+                </div>
+                <div class="chat-input-row">
+                    <input type="text" id="chat-input" placeholder="Tuliskan keluhan atau kendala Anda di sini..." autocomplete="off">
+                    <button id="btn-send-chat" class="btn btn-primary">Kirim 🚀</button>
+                </div>
+            </section>
+
+            <!-- 📊 Windows Event Log & BSOD Crash Analyzer -->
+            <section class="card-glass log-analyzer-card">
+                <div class="card-header">
+                    <h3>📊 System Event Log & BSOD Analyzer</h3>
+                    <button id="btn-analyze-logs" class="btn btn-sm btn-warning">🔍 Analyze Logs with AI</button>
+                </div>
+                <div id="log-analysis-result" class="log-analysis-box">
+                    <p class="text-muted">Klik "Analyze Logs with AI" untuk memindai Event Viewer Kritis & Crash Dump Windows.</p>
+                </div>
+            </section>
+        </div>
+
+        <!-- 1-Click Repair Action Panel -->
+        <section class="actions-section">
+            <h2 class="section-title">🛠️ 1-Click Repair & Troubleshooting Actions</h2>
+            <div class="actions-grid">
+                <div class="action-card">
+                    <div class="action-icon">🌐</div>
+                    <h3>Fix Network & DNS</h3>
+                    <p>Menjalankan <code>flushdns</code>, reset cache, dan renew IP address.</p>
+                    <button id="btn-fix-network" class="btn btn-primary">Run Fix Network</button>
+                </div>
+
+                <div class="action-card">
+                    <div class="action-icon">🖨️</div>
+                    <h3>Fix Printer Spooler</h3>
+                    <p>Membersihkan antrean dokumen mogok & restart service spooler.</p>
+                    <button id="btn-fix-spooler" class="btn btn-primary">Clear Printer Queue</button>
+                </div>
+
+                <div class="action-card">
+                    <div class="action-icon">🛡️</div>
+                    <h3>System Repair (SFC)</h3>
+                    <p>Memindai & memperbaiki file sistem Windows corrupt via <code>sfc /scannow</code>.</p>
+                    <button id="btn-fix-sfc" class="btn btn-warning">Run SFC Scan</button>
+                </div>
+
+                <div class="action-card">
+                    <div class="action-icon">🔄</div>
+                    <h3>Group Policy Update</h3>
+                    <p>Memaksa pembaruan kebijakan Active Directory (`gpupdate /force`).</p>
+                    <button id="btn-fix-gpupdate" class="btn btn-secondary">Update GP</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Processes & Command Output Area -->
+        <div class="split-layout">
+            <!-- Top Memory Heavy Processes -->
+            <section class="processes-section card-glass">
+                <div class="card-header">
+                    <h3>🔥 Top Heavy Memory Processes</h3>
+                    <span class="subtext">Auto-detected high memory apps</span>
+                </div>
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>PID</th>
+                                <th>Process Name</th>
+                                <th>CPU</th>
+                                <th>RAM (MB)</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="processes-tbody">
+                            <tr><td colspan="5" class="text-center">Loading processes...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Console Log & Terminal Output -->
+            <section class="console-section card-glass">
+                <div class="card-header">
+                    <h3>🖥️ Execution Logs & Command Outputs</h3>
+                    <button id="btn-clear-log" class="btn btn-sm btn-outline">Clear Logs</button>
+                </div>
+                <div id="console-output" class="console-box">
+                    <div class="log-line log-info">[SYSTEM] Agent initialized. Ready to accept repair requests.</div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- License Activation & Generator Modal -->
+    <div id="license-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3>🔑 Manajemen Lisensi Nantara Support</h3>
+                <button id="btn-close-modal" class="btn-close">&times;</button>
+            </div>
+            <div class="modal-tabs" style="display: flex; gap: 10px; margin-bottom: 14px;">
+                <button id="tab-btn-activate" class="btn btn-sm btn-primary">Aktivasi Lisensi</button>
+                <button id="tab-btn-generate" class="btn btn-sm btn-secondary">⚙️ Key Generator (Admin)</button>
+            </div>
+
+            <!-- Tab 1: Aktivasi Lisensi -->
+            <div id="tab-activate-container" class="modal-body">
+                <p>Masukkan Pro License Key yang Anda miliki untuk mengaktifkan fitur Enterprise & AI Unlocked:</p>
+                <input type="text" id="license-key-input" placeholder="NANTARA-PRO.XXXXXXXX.YYYY-MM-DD.ZZZZZZZZ" autocomplete="off">
+                <div id="license-feedback" style="margin-top: 10px; font-size: 13px;"></div>
+                <div class="modal-footer" style="margin-top: 16px;">
+                    <button id="btn-activate-license" class="btn btn-primary">Aktifkan Lisensi Pro</button>
+                </div>
+            </div>
+
+            <!-- Tab 2: Generator Lisensi (Admin Tool) -->
+            <div id="tab-generate-container" class="modal-body" style="display: none;">
+                <p style="color: var(--accent-amber);">⚙️ <strong>Nantara Private Key Generator Tool</strong></p>
+                <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 10px;">
+                    <label style="font-size: 12px; color: var(--text-muted);">Nama Klien / Perusahaan:</label>
+                    <input type="text" id="gen-client-input" placeholder="Contoh: PT Nantara Digital" value="PT Nantara Digital">
+                    <label style="font-size: 12px; color: var(--text-muted);">Tanggal Kadaluarsa (YYYY-MM-DD):</label>
+                    <input type="text" id="gen-expiry-input" placeholder="2027-12-31" value="2027-12-31">
+                    <button id="btn-generate-key" class="btn btn-warning" style="margin-top: 8px;">🔑 Generate Pro Key Instan</button>
+                </div>
+                <div id="gen-output-box" style="margin-top: 14px; display: none;">
+                    <label style="font-size: 12px; color: var(--accent-emerald);">Pro License Key Dihasilkan:</label>
+                    <textarea id="gen-key-result" rows="3" readonly style="width: 100%; background: #050811; color: var(--accent-cyan); font-family: monospace; font-size: 12px; padding: 8px; border-radius: 6px; border: 1px solid var(--card-border); margin-top: 4px;"></textarea>
+                    <button id="btn-auto-apply" class="btn btn-sm btn-primary" style="margin-top: 6px;">⚡ Terapkan Lisensi Ini Sekarang</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
