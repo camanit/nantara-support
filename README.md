@@ -40,28 +40,55 @@
 
 ---
 
-## 🚀 Panduan Memulai (Quick Start)
+## 🚀 Panduan Memulai & Cara Penggunaan (Quick Start & Usage)
 
 ### Prasyarat
-* [Rust](https://www.rust-lang.org/tools/install) (cargo v1.75+)
-* Windows 10/11 (dengan hak akses Administrator untuk perintah perbaikan sistem)
+* Windows 10/11 (dengan hak akses Administrator untuk fungsi perbaikan sistem)
+* [Rust](https://www.rust-lang.org/tools/install) (cargo v1.75+) *jika ingin mendaur ulang/compile dari source code*.
 
-### 1. Clone Repository
+---
+
+### 💻 Cara 1: Menggunakan Portable Binary (`nantara-support.exe`)
+
+1. Unduh atau salin berkas `nantara-support.exe`.
+2. **Double-click `nantara-support.exe`** (disarankan *Run as Administrator*).
+3. Browser default komputer Anda akan **otomatis terbuka** ke alamat:
+   ```text
+   http://localhost:3030
+   ```
+4. Dashboard Control Panel siap digunakan!
+
+---
+
+### 🛠️ Cara 2: Menjalankan dari Source Code (Developer Mode)
+
 ```bash
+# 1. Clone repository
 git clone https://github.com/camanit/nantara-support.git
 cd nantara-support
-```
 
-### 2. Jalankan Agent & Web Server
-```bash
+# 2. Jalankan agent & server Axum
 cargo run
+
+# 3. Buka browser ke http://localhost:3030
 ```
 
-### 3. Akses Control Panel
-Buka browser favorit Anda dan kunjungi:
-```text
-http://localhost:3030
-```
+---
+
+## 📖 Petunjuk Penggunaan Fitur Dashboard
+
+1. **🛠️ 1-Click Repair Panel**:
+   - Klik tombol **Run Fix Network** untuk mengatasi koneksi WiFi/LAN lemot atau RDP terputus.
+   - Klik tombol **Clear Printer Queue** untuk menghapus dokumen terhenti di spooler printer.
+   - Klik tombol **Run SFC Scan** untuk memperbaiki file sistem Windows corrupt.
+2. **🤖 AI Helpdesk Chat Widget**:
+   - Tulis keluhan dalam bahasa alami (misal: *"Komputer lemot dan gak bisa ngeprint"*).
+   - AI akan menganalisis dan menyediakan tombol aksi perbaikan rekomendasi.
+3. **📊 Log & BSOD Analyzer**:
+   - Klik **Analyze Logs with AI** untuk memindai Event Viewer Kritis dan file Minidump Blue Screen.
+4. **🔑 Aktivasi Lisensi Pro**:
+   - Klik tombol **🔑 Lisensi Pro** di header kanan atas.
+   - Masukkan Pro License Key yang Anda miliki, lalu klik **Aktifkan Lisensi Pro**.
 
 ---
 
@@ -70,7 +97,7 @@ http://localhost:3030
 ```text
 nantara-support/
 ├── Cargo.toml                  # Konfigurasi Package & Dependensi Rust
-├── README.md                   # Dokumentasi Utama
+├── README.md                   # Dokumentasi Utama & Cara Penggunaan
 ├── ROADMAP.md                  # Roadmap Pengembangan Proyek
 ├── license.key                 # File Lisensi Pro (Opsional)
 ├── src/
@@ -82,8 +109,6 @@ nantara-support/
 │   ├── diagnostics/            # Engine Perbaikan Sistem & Log Parser
 │   └── utils/
 │       └── cmd.rs              # Executor PowerShell & CMD
-├── tools/
-│   └── key-generator/          # Tool Privat Generator Lisensi Pro
 └── web/                        # Web Dashboard UI (Di-embed ke .exe)
 ```
 
