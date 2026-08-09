@@ -7,7 +7,7 @@
 
 **Nantara Support** adalah aplikasi agen diagnostik IT Support dan Control Panel berbasis web yang ditulis dalam bahasa **Rust**. Aplikasi ini dirancang untuk mendeteksi, menguji telemetri, dan memberikan tindakan perbaikan **1-Klik (Self-Healing)** untuk masalah umum sistem operasi seperti jaringan, printer spooler, perbaikan OS, dan pembersihan memori.
 
-![Dashboard Preview](https://via.placeholder.com/1200x600/0b0f19/06b6d4?text=Nantara+Support+Control+Panel+Dashboard)
+![Dashboard Preview](web/dashboard-preview.png)
 
 ---
 
